@@ -1,0 +1,32 @@
+$include /etc/inputrc
+
+
+# this is to enable case insensitive completion,
+# very usefull for navigation
+set completion-ignore-case On
+
+# this is to disable the highlighting when copy
+# and pasting to and from the terminal, alos this
+# disables the highlighting when using CTRL+r to 
+# search on the history and allows to confirm the 
+# selected command as is
+set enable-bracketed-paste off
+
+
+$if mode=vi 
+
+    # add some vim like motion to the bash vi mode
+    # diw (delete inside of word) will be sent as 
+    # (go back to begining of word and then delete word)
+    # The other ones are also following the same principle
+    set keymap vi-command
+    "diw": "bdw"       
+    "ciw": "bcw"
+    "yiw": "byw"
+
+    # remap the jk combination in insert mode 
+    # while using vi mode in bash to escape.
+    set keymap vi-insert
+    "jk": "\e"
+
+$endif

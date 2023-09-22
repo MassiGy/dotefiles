@@ -1,0 +1,51 @@
+-- { THIS IS THE VIMRC FILE FOR THE VIM VRAPPER FOR ECLIPSE IDE }
+
+-- also, to learn more about vrapper check out this discussion:
+-- https://sourceforge.net/p/vrapper/discussion/901741/thread/a3347740/
+
+-- also, from this, I got a list of vrapper supported commands 
+-- link: https://vrapper.sourceforge.net/documentation/index.php?topic=commands
+
+-- Besides, I added some of my nvim config to the builtin eclipse keybindings client
+-- and for the most of them they do work out of the box, but for others I added a leader key
+-- which is ",". Exemple: "gcc" in my nvim setup went to ",gcc" (toggle comment). This is due
+-- to the fact that the builtin keybinding client does not provide a way to seperate insert mode
+-- and normal mode for the vrapper plugin.
+
+
+-- remap of the esc key ( this will remap the esc key to jk in insert mode  
+vnoremap jk <Esc>
+inoremap jk <Esc>
+
+
+-- remap for the page scroll - keep the cursor at the center 
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+nnoremap { {zz
+nnoremap } }zz
+
+-- Keep the searched terms in the middel of the screen
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+-- remap for when moving multiple line in visutal mode - this keeps the indentation right
+vnoremap <A-j> :m >+1<CR>gv=gv
+vnoremap <A-k> :m <-2<CR>gv=gv
+
+-- change the behavior of J in normal mode since J makes the line below you go up
+-- all to the end of your current line the problem is that your cursor goes to the end 
+-- as well so with the new behavior we mark the current [p]oint and then we do the J 
+-- then we go back to our marked [p]oint.
+nnoremap J mpJ`p
+
+
+-- remap the <C-c> to <ESC> in insert mode this is because <C-c> does have some 
+-- weird behavior just look up theprimeagean neovim setup from scratch video.
+inoremap <C-c> <Esc>
+
+
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+
+
