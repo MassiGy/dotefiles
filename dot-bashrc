@@ -62,12 +62,48 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# set some colors constants, (we will 
+# use them for the bash prompt PS1)
+GREEN='\[\033[1;32m\]'
+YELLOW='\[\033[1;33m\]'
+PURPLE='\[\033[1;35m\]'
+WHITE='\[\033[1;37m\]'
+BLUE='\[\033[1;34m\]'
+CYAN='\[\033[1;36m\]'
+NC='\[\033[0m\]'
+
 if [ "$color_prompt" = yes ]; then
-    PS1='[\[\033[01;34m\] \W \[\033[00m\]]\$ '
+    
+    # if current directory is a git directory
+    is_current_dir_git_folder=$(git rev-parse --is-inside-work-tree 2>/dev/null)
+    if [ $is_current_dir_git_folder ]; then 
+        
+        # grap the name of the current branch
+        current_git_branch=$(git branch --show-current)
+        # check if there is any changes or untracked files
+        current_git_has_changes=$(git status | grep "Changes not staged for commit:")
+        current_git_has_untracked=$(git status | grep "Untracked files:")
+        
+        if [ -z "$current_git_has_changes" ] && [ -z "$current_git_has_untracked" ];
+        then
+            
+            # if no changes, just output the current branch in the PS1
+            PS1="[${BLUE} \W :git(${RED}$current_git_branch${BLUE})${NC}] \$ "
+
+        else
+            
+            # if there is changes, add a plus signe next the current brank name
+            PS1="[${BLUE} \W :git(${RED}$current_git_branch[${RED}x${RED}]${BLUE})${NC}] \$ "
+
+        fi
+    else
+        PS1="[${BLUE} \W ${NC}] \$ "
+    fi 
+
     # this is the default, for all the default bashrc file, check /etc/skl/.bashrc
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h: \W \$ '
+    PS1="${debian_chroot:+($debian_chroot)}\u@\h: \W \$ "
 fi
 unset color_prompt force_color_prompt
 
@@ -125,7 +161,8 @@ if ! shopt -oq posix; then
 fi
 
 
-alias rm="trash -v"
+alias rm="myrm.sh"
+alias cd=". mycd.sh"
 
 # set the vi mode for bash
 # paste with the vim motions and zoom with the terminal menu bar utilities
@@ -135,8 +172,3 @@ set -o vi
 stty -ixon
 
 # custom scripts:
-
-echo -e '\e[1;32m # Trying to learn something new ? Consider using SQ3R learning methodology; \e[0m'
-echo -e '\e[1;32m # To update & check for system health, use update-me custom script; \e[0m'
-echo -e '\e[1;32m # To check your email box, use the mailx client; \e[0m'
-

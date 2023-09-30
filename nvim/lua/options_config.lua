@@ -9,6 +9,7 @@ vim.opt.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.rnu = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -31,11 +32,11 @@ vim.o.smartcase = true
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 
--- Decrease update time (save to disk only after 5s of inactivity
+-- Decrease update time (save to disk only after 10s of inactivity
 -- this is better since I have a hard drive which is not super fast)
-vim.o.updatetime = 5000
+vim.o.updatetime = 10000
 vim.o.timeout = true
-vim.o.timeoutlen = 250
+vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'

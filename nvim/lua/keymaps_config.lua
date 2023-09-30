@@ -41,7 +41,6 @@ vim.keymap.set("n", "J", "mpJ`p")
 -- for more info head towards to : https://youtu.be/w7i4amO_zaE?t=1595
 vim.keymap.set("x", "p", [["_dP]])
 
-
 -- -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
