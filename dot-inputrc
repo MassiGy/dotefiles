@@ -66,13 +66,27 @@ $if mode=vi
     "ya'": "F'yf'"       
     "ya\"": "F\"yf\""       
 
-    # remap the jk combination in insert mode 
-    # while using vi mode in bash to escape.
+    # By default, while in normal|command mode
+    # C-p and C-n helps to get the prev
+    # and next command in the history.
+    # But since I am using fzf with these
+    # key bindings, I choosed to stik with 
+    # j and k, since they are easier to type 
+    # and faster.
+    # So I ramap below C-p in normal mode
+    # to  C-p after entering insert mode
+    # to let the cd < fzf work, 
+    # same with C-n, (fzf with nvim)
+    "\C-p":"i\C-p"
+    "\C-n":"i\C-n"
+    
     set keymap vi-insert
 
-    # remap escape to jk
+    # remap the jk combination in insert mode 
+    # while using vi mode in bash to escape.
     "jk": "\e"
-    
+
+
     # add autopairs
     #
     # \C-v is equal to paste
