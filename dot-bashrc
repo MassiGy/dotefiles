@@ -173,5 +173,10 @@ set -o vi
 stty -ixon
 
 # bind some keys for extra functionality
-bind '"\C-p":"cd $\C-v(dirname $\C-v(fzf\C-v)\C-v 2>/dev/null) \n"'
+bind '"\C-p":"cd $\C-v( find . -type d | fzf \C-v)  2>/dev/null \n"'
 bind '"\C-n":"cd $\C-v(dirname $\C-v(fzf\C-v)\C-v 2>/dev/null) && nvim . \n"'
+
+
+
+
+
