@@ -7,7 +7,7 @@ set completion-ignore-case On
 
 # this is to disable the highlighting when copy
 # and pasting to and from the terminal, alos this
-# disables the highlighting when using CTRL+r to 
+
 # search on the history and allows to confirm the 
 # selected command as is
 set enable-bracketed-paste off
@@ -17,16 +17,83 @@ $if mode=vi
 
     # add some vim like motion to the bash vi mode
     # diw (delete inside of word) will be sent as 
-    # (go back to begining of word and then delete word)
+    # (move once to the right to prevent going back to the previous 
+    # word if already on the first letter then go back to begining 
+    # of word and then delete word)
     # The other ones are also following the same principle
     set keymap vi-command
-    "diw": "bdw"       
-    "ciw": "bcw"
-    "yiw": "byw"
+    "diw": "lbdw"       
+
+    "di(": "T(dt)"       
+    "di{": "T{dt}"       
+    "di[": "T[dt]"       
+    "di'": "T'dt'"       
+    "di\"": "T\"dt\""       
+
+    "da(": "F(df)"       
+    "da{": "F{df}"       
+    "da[": "F[df]"       
+    "da'": "F'df'"       
+    "da\"": "F\"df\""       
+
+
+    "ciw": "lbcw"
+
+    "ci(": "T(ct)"       
+    "ci{": "T{ct}"       
+    "ci[": "T[ct]"       
+    "ci'": "T'ct'"       
+    "ci\"": "T\"ct\""       
+
+    "ca(": "F(cf)"       
+    "ca{": "F{cf}"       
+    "ca[": "F[cf]"       
+    "ca'": "F'cf'"       
+    "ca\"": "F\"cf\""       
+
+
+    "yiw": "lbyw"
+
+    "yi(": "T(yt)"       
+    "yi{": "T{yt}"       
+    "yi[": "T[yt]"       
+    "yi'": "T'yt'"       
+    "yi\"": "T\"yt\""       
+
+    "ya(": "F(yf)"       
+    "ya{": "F{yf}"       
+    "ya[": "F[yf]"       
+    "ya'": "F'yf'"       
+    "ya\"": "F\"yf\""       
 
     # remap the jk combination in insert mode 
     # while using vi mode in bash to escape.
     set keymap vi-insert
+
+    # remap escape to jk
     "jk": "\e"
+    
+    # add autopairs
+    #
+    # \C-v is equal to paste
+    # \e is equal to escape
+    #
+    # since writing () while 
+    # enabling autopairs does 
+    # cause an infinit recusion
+    # where bash always trys to 
+    # complete the opening parenthensis
+    # of the previous autoparis attempts.
+    # How this works?
+    #
+    # while in input mode,
+    # if ( is inserted, we 
+    # do catch it and paste ()
+
+    "(": "\C-v()\ei"
+    "[": "\C-v[]\ei"
+    "{": "\C-v{}\ei"
+    "\"": "\C-v\"\C-v\"\ei"
+    "'": "\C-v'\C-v'\ei"
 
 $endif
