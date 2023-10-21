@@ -1,1 +1,1 @@
-nohup redshift -O 4000 &
+redshift -O 4000 &

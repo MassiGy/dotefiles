@@ -27,4 +27,3 @@ require('colorscheme_config')
 -- setup some additionnal tweaks for better personal experience
 require('tweaks_config')
 
-

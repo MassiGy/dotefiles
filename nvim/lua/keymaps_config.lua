@@ -6,7 +6,6 @@ vim.keymap.set('i', 'jk', '<Esc>')
 -- weird behavior, just look up theprimeagean neovim setup from scratch video.
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-
 -- remap for the toggleterm plugin
 vim.keymap.set('n', '<C-j>', ':terminal<CR>')
 
@@ -40,6 +39,10 @@ vim.keymap.set("n", "J", "mpJ`p")
 -- make select and paste not loose the clipboad value
 -- for more info head towards to : https://youtu.be/w7i4amO_zaE?t=1595
 vim.keymap.set("x", "p", [["_dP]])
+
+-- remap CtrlZ to nop since sometimes I forget that I am using
+-- nvim and type CtrlZ instead of u for undo. 
+vim.keymap.set("n", '<C-z>', '<Nop>')
 
 -- -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
