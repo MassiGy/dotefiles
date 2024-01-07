@@ -226,6 +226,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
         <keybind key="W-d">
             <action name="ToggleShowDesktop" />
         </keybind>
+
         <!-- Keybindings for windows -->
         <keybind key="A-Escape">
             <action name="Lower" />
@@ -275,6 +276,16 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <direction>west</direction>
             </action>
         </keybind>
+        <keybind key="W-h">
+            <action name="Unmaximize" />
+            <action name="MaximizeVert" />
+            <action name="MoveResizeTo">
+                <width>50%</width>
+            </action>
+            <action name="MoveToEdge">
+                <direction>west</direction>
+            </action>
+        </keybind>
         <keybind key="W-Right">
             <action name="Unmaximize" />
             <action name="MaximizeVert" />
@@ -285,8 +296,24 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <direction>east</direction>
             </action>
         </keybind>
+        <keybind key="W-l">
+            <action name="Unmaximize" />
+            <action name="MaximizeVert" />
+            <action name="MoveResizeTo">
+                <width>50%</width>
+            </action>
+            <action name="MoveToEdge">
+                <direction>east</direction>
+            </action>
+        </keybind>
+        <keybind key="W-j">
+            <action name="Unmaximize" />
+        </keybind>
         <keybind key="W-Down">
             <action name="Unmaximize" />
+        </keybind>
+        <keybind key="W-k">
+            <action name="Maximize" />
         </keybind>
         <keybind key="W-Up">
             <action name="Maximize" />
@@ -327,6 +354,14 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <command>dmenu_run</command>
             </action>
         </keybind>
+
+        <!-- fullscreen and unfullscreen -->
+        <keybind key="W-f">
+            <action name="ToggleFullscreen" />
+            <!-- if fullscreen, then back to prev state-->
+        </keybind>
+
+        <!-- Locking and privacy stuff-->
         <keybind key="C-S-q">
             <action name="Execute">
                 <command>openbox --exit</command>
@@ -785,6 +820,8 @@ Copy the file to $HOME/.config/openbox/ instead. -->
 		# asks to not be shown in taskbars. window cycling actions will also
 		# skip past such windows
 
+		<fullscreen>yes</fullscreen>
+		# make the window in fullscreen mode when it appears
 
 		<maximized>true</maximized>
 		# 'Horizontal', 'Vertical' or boolean (yes/no)
@@ -794,8 +831,13 @@ Copy the file to $HOME/.config/openbox/ instead. -->
 	-->
         <!-- Custom config to remove decorators -->
         <application class="*">
-            <fullscreen>yes</fullscreen>
             <decor>no</decor>
+        </application>
+        <application class="Firefox-esr">
+            <!-- for firefox, enable fullscreen as default-->
+            <!-- for the rest, leave it manual since sometimes
+            I forgot in which terminal I am in-->
+            <fullscreen>yes</fullscreen>
         </application>
     </applications>
 </openbox_config>
