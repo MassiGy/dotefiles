@@ -1,5 +1,14 @@
 #! /bin/bash
 
+
+# (NOTE: THIS IS NOT NEEDED ANY MORE)
+# I've been able to replace this script
+# with the standard git integration for 
+# bash following this guide: 
+# link: https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
+# for the scripts: you can find them on github github.com/git
+
+
 # if the target directory is 
 # already on a git folder 
 # or will contain a git 
