@@ -73,33 +73,14 @@ BLUE='\[\033[1;34m\]'
 CYAN='\[\033[1;36m\]'
 NC='\[\033[0m\]'
 
+
+# source the git prompt script 
+source ~/.config/git/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 if [ "$color_prompt" = yes ]; then
-    
-    # if current directory is a git directory
-    is_current_dir_git_folder=$(git rev-parse --is-inside-work-tree 2>/dev/null)
-    if [ $is_current_dir_git_folder ]; then 
-        
-        # grap the name of the current branch
-        current_git_branch=$(git branch --show-current)
-        # check if there is any changes or untracked files
-        current_git_has_changes=$(git status | grep "Changes not staged for commit:")
-        current_git_has_untracked=$(git status | grep "Untracked files:")
-        
-        if [ -z "$current_git_has_changes" ] && [ -z "$current_git_has_untracked" ];
-        then
-            
-            # if no changes, just output the current branch in the PS1
-            PS1="[${BLUE} \W :git(${RED}$current_git_branch${BLUE})${NC}] \$ "
-
-        else
-            
-            # if there is changes, add a plus signe next the current brank name
-            PS1="[${BLUE} \W :git(${RED}$current_git_branch[${BLUE}x${RED}]${BLUE})${NC}] \$ "
-
-        fi
-    else
-        PS1="[${BLUE} \W ${NC}] \$ "
-    fi 
+    #             - BLUE COLORE-   - NOCOLOR-               - RED COLOR  -  - NOCOLOR  -
+    export PS1='[ \[\033[1;34m\]\W\[\033[0m\]$(__git_ps1 " (\[\033[1;31m\]%s\[\033[0m\])") ] \$ '
 
     # this is the default, for all the default bashrc file, check /etc/skl/.bashrc
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -163,8 +144,6 @@ fi
 
 
 alias rm="myrm.sh"
-alias cd=". mycd.sh"
-alias vim="nvim"
 
 # set the vi mode for bash
 # paste with the vim motions and zoom with the terminal menu bar utilities
@@ -173,52 +152,10 @@ set -o vi
 # this prevents the shell from freezing when typing CTRL+S
 stty -ixon
 
-# bind some keys for extra functionality
 
-# TODO
-#
-# For better usage of the C-n and C-p, instead of searching 
-# in everything and then excluding some folders, I can do the
-# opposite, I can search only in the folder that I want.
-#
-# This will make things more efficient and more peppy.
-#
-# My idea to do this is to set a new env variable which will track of 
-# my work folder and then whenver I press C-p or C-n, I traverse that 
-# array of folders and search in them one by one, the tricky part is 
-# to find a way to group all the searchs results into one so as fzf 
-# can look into then as a single stdin stream.
-
-# C-p: find all the folder, once one selected, jump to it.
-bind '"\C-p":"cd $\C-v( find . -type d ! -path */node_modules/* ! -path */.cache/* ! -path */.git/* ! -path */.vscode/* ! -path */build/* ! -path */bin/* ! -path */__py*/* | fzf \C-v) 2>/dev/null \n "'
-# C-n: find all the files, once one file is selected, 
-# open it and then if you need to view the folder structer
-# just user netrw.
-bind '"\C-n": "cd $\C-v( dirname $\C-v( find . ! -path */node_modules/* ! -path */.cache/* ! -path */.git/* ! -path */.vscode/* ! -path */build/* ! -path */bin/* ! -path */__py*/* | fzf \C-v) 2>/dev/null \C-v) && nvim . \n"'
 
 # C-l: clear
 bind '"\C-l":"clear\n"'
 
 
-# this is for the tty. to make it light themed
-
-if [ "$TERM" = "linux" ]; then
-    echo -en "\e]P0232323" #black
-    echo -en "\e]P82B2B2B" #darkgrey
-    echo -en "\e]P1D75F5F" #darkred
-    echo -en "\e]P9E33636" #red
-    echo -en "\e]P287AF5F" #darkgreen
-    echo -en "\e]PA98E34D" #green
-    echo -en "\e]P3D7AF87" #brown
-    echo -en "\e]PBFFD75F" #yellow
-    echo -en "\e]P48787AF" #darkblue
-    echo -en "\e]PC7373C9" #blue
-    echo -en "\e]P5BD53A5" #darkmagenta
-    echo -en "\e]PDD633B2" #magenta
-    echo -en "\e]P65FAFAF" #darkcyan
-    echo -en "\e]PE44C9C9" #cyan
-    echo -en "\e]P7E5E5E5" #lightgrey
-    echo -en "\e]PFFFFFFF" #white
-    clear #for background artifacting
-fi
 
