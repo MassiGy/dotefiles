@@ -1,0 +1,66 @@
+" options 
+
+set clipboard+=unnamed
+set mouse=v
+
+set nu
+
+set linebreak	
+set textwidth=100
+set showmatch	
+ 
+set hlsearch
+set smartcase	
+set ignorecase
+set incsearch
+ 
+set autoindent	
+set shiftwidth=4	
+set smartindent
+set smarttab	
+set softtabstop=4	
+ 
+set ruler	
+set undolevels=1000	
+set backspace=indent,eol,start	
+
+" for syntax highlinghting
+syntax on
+colorscheme peachpuff
+ 
+
+
+
+" remaps 
+vnoremap jk <Esc>
+inoremap jk <Esc>
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-e> :Ex!<CR>
+nnoremap <C-w> :set wrap!<CR>
+nnoremap <C-n> :set nu!<CR>
+
+
+nnoremap { {zz
+nnoremap } }zz
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nnoremap j gj
+nnoremap k gk
+
+vnoremap <A-j> :m >+1<CR>gv=gv
+vnoremap <A-k> :m <-2<CR>gv=gv
+
+nnoremap J mpJ`p
+
+
+
+inoremap <C-c> <Esc>
+
+
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+

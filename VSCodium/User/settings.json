@@ -1,0 +1,129 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "workbench.startupEditor": "none",
+    "editor.lineNumbers": "relative",
+    "vim.leader": " ",
+    "editor.fontWeight": "bold",
+    "terminal.integrated.fontWeight": "bold",
+    "terminal.integrated.fontSize": 15,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.autoindent": true,
+    "vim.mouseSelectionGoesIntoVisualMode": true,
+    "vim.smartcase": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "#D4D3D4",
+    "vim.highlightedyank.duration": 280,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "g",
+                "p",
+                "d"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p",
+                "i"
+            ],
+            "commands": [
+                "editor.action.peekImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "q"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p",
+                "t"
+            ],
+            "commands": [
+                "editor.action.peekTypeDefinition"
+            ]
+        },
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "editor.fontSize": 15,
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "monospace",
+    "editor.cursorStyle": "block",
+    "window.zoomLevel": 1,
+    "workbench.editor.showTabs": "single",
+    "workbench.activityBar.location": "hidden",
+    "terminal.integrated.cursorStyleInactive": "block",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "Quiet Light",
+}
