@@ -1,1 +1,30 @@
+
+# redshift for the anti-blue light filter
 redshift -O 4000 &
+
+# tint2 is the panel
+tint2 &
+
+# feh to draw our background
+feh --bg-scale ~/.local/share/wallpapers/anime/in-front-of-car.jpg &
+
+# add our volume manager to the systray
+volumeicon &
+
+# add the nm-applet for NetworkManager
+nm-applet &
+
+# add the qlipper systray icon
+qlipper &
+
+# compton for better effects on our windows
+compton &
+
+# add xscreensaver as a deamon 
+xscreensaver -nosplash &
+
+# use xinput to set natural scrolling and one click tap
+xinput set-prop 12 'libinput Tapping Enabled' 1 
+xinput set-prop 12 'libinput Natural Scrolling Enabled' 1
+
+
