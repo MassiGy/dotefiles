@@ -1,0 +1,4 @@
+The diffrence between ./arandr-screen-resolution-setup.sh and ./arandrsetup-external-right-internal-left-active-both.sh is: 
+
+Nothing in the outcome changes, but how it is done is diffrent, in the first file we explicitly say that the second monitor (my laptop monitor) should be at the right of the external one (hdmi), but in the second script we offset the laptop monitor position by the width of the external one, so it is the same thing but acheived diffrently .
+
