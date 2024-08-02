@@ -1,0 +1,58 @@
+" extra vimrc that is super cool
+
+" disable backward compability with vi 
+set nocompatible
+
+" add a menu for file searching
+set wildmenu
+
+" add regexp based recursive fuzzy finding 
+set path+=**		" you can also add to this /usr/lib/includes if you want
+
+" in vim, once you've opened up a couple of files, you can use the :ls command 
+" to list all the buffers that you've opened, and you can use the :b command to 
+" go back to one of them just by providing a substring of its name, and if you've 
+" added the ** to the path as mentionned above you can use <tab> to cycle through 
+" the files list.
+
+" use ctags for go to definitions ( you might need to install it ) 
+
+" for general auto-completion use ctrl+n - see help ins-completion
+" for filename auto-completions use control-x control+f ( similar to emacs )
+
+" diable the annoying banner in netrw
+let g:netrw_banner=0
+" enable tree view for netrw
+let g:netrw_liststyle=3
+" hide gitignore files
+let g:netrw_list_hide=netrw_gitignore#Hide()
+" open splits to the right
+let g:netrw_altv=1
+
+" With these netrw settings, we can open up folders in a tree view, 
+" and we can use the :e command on a folder name to open it in a netrw " buffer and traverse it.
+" We can also open file with 'v' for vertical split or 'h' for 
+" horizental split
+" for more read help netrw-browse-maps
+
+" use show command to keep track of your keystrokes
+set showcmd
+
+
+" https://youtu.be/XA2WjJbmmoM?t=2446
+" in this video timestemp, the lecturer shows how we can add a remap to auto-paste in an html 
+" skelethon. You can do this for makefiles and css files ( master reset ) for gitignore files 
+" and so on.
+
+
+" for me I need to remap wg to wqq to prevent me from closign vim everytime I write the buffer and 
+" accedentally add the 'q' to the end of that command.
+
+
+" how to use vim's help documentations effectively : https://youtu.be/XA2WjJbmmoM?t=3867
+
+" how to run macros effectively: https://youtu.be/MquaityA1SM?t=1451
+
+" how to run the current line as a command and get back the output to the exact same line
+" https://youtu.be/MquaityA1SM?t=2093
+

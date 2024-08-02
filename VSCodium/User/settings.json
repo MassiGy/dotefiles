@@ -1,11 +1,7 @@
 {
-    "window.menuBarVisibility": "toggle",
-    "workbench.startupEditor": "none",
-    "editor.lineNumbers": "relative",
+    //
+    // vim 
     "vim.leader": " ",
-    "editor.fontWeight": "bold",
-    "terminal.integrated.fontWeight": "bold",
-    "terminal.integrated.fontSize": 15,
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
@@ -18,17 +14,7 @@
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.color": "#D4D3D4",
     "vim.highlightedyank.duration": 280,
-    "vim.normalModeKeyBindings": [
-        {
-            "before": [
-                "g",
-                "p",
-                "d"
-            ],
-            "commands": [
-                "editor.action.peekDefinition"
-            ]
-        },
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
                 "K"
@@ -39,27 +25,9 @@
         },
         {
             "before": [
-                "g",
-                "i"
-            ],
-            "commands": [
-                "editor.action.goToImplementation"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "p",
-                "i"
-            ],
-            "commands": [
-                "editor.action.peekImplementation"
-            ]
-        },
-        {
-            "before": [
-                "g",
-                "q"
+                "<leader>",
+                "c",
+                "a"
             ],
             "commands": [
                 "editor.action.quickFix"
@@ -67,34 +35,44 @@
         },
         {
             "before": [
-                "g",
-                "r"
+                "leader",
+                "v"
             ],
             "commands": [
-                "editor.action.referenceSearch.trigger"
+                ":vsplit"
             ]
         },
         {
             "before": [
-                "g",
-                "t"
+                "leader",
+                "s"
             ],
             "commands": [
-                "editor.action.goToTypeDefinition"
+                ":split"
             ]
         },
         {
             "before": [
-                "g",
-                "p",
-                "t"
+                "<leader>",
+                "f",
             ],
             "commands": [
-                "editor.action.peekTypeDefinition"
+                "editor.fold"
+            ],
+        },
+        // This is to make select and paste not loose the clipboad value
+        // https://github.com/VSCodeVim/Vim/issues/3628#issuecomment-1337369581
+        {
+            "before": [
+                "p"
+            ],
+            "commands": [
+                "editor.action.clipboardPasteAction",
+                "extension.vim_escape"
             ]
         },
     ],
-    "vim.insertModeKeyBindings": [
+    "vim.insertModeKeyBindingsNonRecursive": [
         {
             "before": [
                 "j",
@@ -105,15 +83,100 @@
             ]
         }
     ],
-    "vim.visualModeKeyBindings": [],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // Stay in visual mode while indenting
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        // Move selected lines while staying in visual mode
+        {
+            "before": [
+                "J"
+            ],
+            "commands": [
+                "editor.action.moveLinesDownAction"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.moveLinesUpAction"
+            ]
+        },
+        // This is to make select and paste not loose the clipboad value
+        // https://github.com/VSCodeVim/Vim/issues/3628#issuecomment-1337369581
+        {
+            "before": [
+                "p"
+            ],
+            "commands": [
+                "editor.action.clipboardPasteAction",
+                "extension.vim_escape"
+            ]
+        },
+        {
+            "before": [
+                "y"
+            ],
+            "commands": [
+                "editor.action.clipboardCopyAction",
+                "extension.vim_escape"
+            ]
+        }
+    ],
+    //
+    // editor
     "editor.fontSize": 15,
+    "editor.fontWeight": "bold",
     "editor.minimap.enabled": false,
-    "editor.fontFamily": "monospace",
+    "editor.fontFamily": "Ubunto Mono",
     "editor.cursorStyle": "block",
+    "editor.cursorSurroundingLines": 8, // scrolloff in vim
+    "editor.linkedEditing": true, // for tags and such (ex: html)
+    "editor.showFoldingControls": "always",
+    "editor.folding": true,
+    "editor.foldingStrategy": "indentation",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    //
+    // window
     "window.zoomLevel": 1,
-    "workbench.editor.showTabs": "single",
-    "workbench.activityBar.location": "hidden",
+    "window.menuBarVisibility": "toggle",
+    //
+    // terminal
     "terminal.integrated.cursorStyleInactive": "block",
-    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.fontWeight": "bold",
+    "terminal.integrated.fontSize": 15,
+    //
+    // workbench
+    "workbench.editor.showTabs": "single",
     "workbench.colorTheme": "Quiet Light",
+    "workbench.startupEditor": "none",
+    "workbench.activityBar.location": "hidden",
+    //
+    // js/ts
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    //
+    // extra
+    "security.workspace.trust.untrustedFiles": "open",
+    "update.showReleaseNotes": false,
+    "search.quickOpen.includeHistory": false,
+    "telemetry.telemetryLevel": "off"
 }
