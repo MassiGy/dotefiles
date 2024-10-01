@@ -1,0 +1,5 @@
+ip=ipconfig $*
+rm=C:\Users\massigy\Documents\programs\recycle-bin.exe $*
+del=C:\Users\massigy\Documents\programs\recycle-bin.exe $*
+trash=C:\Users\massigy\Documents\programs\recycle-bin.exe $*
+
