@@ -1,4 +1,13 @@
 ip=ipconfig $*
+
+ls=ls --color=auto $*
+l=ls -CF --color=auto $*
+ll=ls -lahF --color=auto $*
+
+grep=grep --color=auto $*
+egrep=egrep --color=auto $*
+fgrep=fgrep --color=auto $*
+
 rm=C:\Users\massigy\Documents\programs\recycle-bin.exe $*
 del=C:\Users\massigy\Documents\programs\recycle-bin.exe $*
 trash=C:\Users\massigy\Documents\programs\recycle-bin.exe $*
